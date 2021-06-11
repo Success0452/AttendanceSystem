@@ -60,7 +60,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/diary_tabLayout_enttries"/>
-    
+
     <TextView
         android:id="@+id/datetext"
         android:layout_width="132dp"
