@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DiaryEntryDbHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "DiaryEntries.db";
     private static final String TABLE_ENTRIES = "entries";
     private static final String KEY_ID = "id";
@@ -23,11 +23,15 @@ public class DiaryEntryDbHelper extends SQLiteOpenHelper {
         super(context,DATABASE_NAME, null,DATABASE_VERSION);
     }
 
-    private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + TABLE_ENTRIES + "("
-            + KEY_ID + "INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_DATE + "TEXT,"
-            + KEY_TITLE+ " TEXT," + KEY_TEXT+ "TEXT)";
+    private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " +
+            TABLE_ENTRIES + "("
+            + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            KEY_DATE + "TEXT,"+
+            KEY_TITLE + "TEXT, "+
+            KEY_TEXT+ " TEXT )";
 
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_ENTRIES;
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -36,8 +40,10 @@ public class DiaryEntryDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+
         db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
+
     }
 
     public void deleteTable() {
@@ -61,7 +67,7 @@ public class DiaryEntryDbHelper extends SQLiteOpenHelper {
     public List<Entry> getAllEntries() {
         List<Entry> entryList = new ArrayList<>();
 
-        String selectQuery = "SELECT * FROM " + TABLE_ENTRIES + "ORDER BY" + KEY_ID + "DESC";
+        String selectQuery = "SELECT * FROM "+TABLE_ENTRIES+"ORDER BY"+KEY_ID+"DESC";
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
         if (cursor.moveToFirst()) {
