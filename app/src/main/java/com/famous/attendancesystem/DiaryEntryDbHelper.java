@@ -25,7 +25,7 @@ public class DiaryEntryDbHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + TABLE_ENTRIES + "("
             + KEY_ID + "INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_DATE + "TEXT,"
-            + KEY_TITLE+ " TEXT," + KEY_TEXT+ "TEXT )";
+            + KEY_TITLE+ " TEXT," + KEY_TEXT+ "TEXT)";
 
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_ENTRIES;
 
