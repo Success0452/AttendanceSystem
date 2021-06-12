@@ -11,7 +11,7 @@ import java.util.List;
 
 public class DiaryEntryDbHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "DiaryEntries.db";
     private static final String TABLE_ENTRIES = "entries";
     private static final String KEY_ID = "id";
@@ -23,8 +23,7 @@ public class DiaryEntryDbHelper extends SQLiteOpenHelper {
         super(context,DATABASE_NAME, null,DATABASE_VERSION);
     }
 
-    private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " +
-            TABLE_ENTRIES + "("
+    private static final String SQL_CREATE_ENTRIES = "CREATE TABLE " + TABLE_ENTRIES + "("
             + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             KEY_DATE + "TEXT,"+
             KEY_TITLE + "TEXT, "+
